@@ -1,38 +1,265 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&family=Comfortaa:wght@400;600&family=Faster+One&family=Luckiest+Guy&family=Mochiy+Pop+P+One&family=Monoton&family=Montserrat:ital,wght@0,400;0,600;1,300&family=Original+Surfer&family=Permanent+Marker&family=Poiret+One&family=Racing+Sans+One&family=Rubik+Mono+One&family=Single+Day&family=Warnes&family=Yanone+Kaffeesatz:wght@300;400;500;600;700&display=swap");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+		"Lucida Sans", Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+	/* background: linear-gradient(
+    90deg,
+    rgba(48, 16, 255, 1) 0%,
+    rgba(100, 115, 255, 1) 100%
+  ); */
+	height: 100%;
+	background-image: url("/Users/junes/todo-app-n1/src/assets/background.jpg");
+	background-size: cover;
+	object-fit: contain;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* .video {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: -1;
+} */
+
+.todo-app {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	width: 520px;
+	min-height: 600px;
+	background: #161a2b;
+	text-align: center;
+	margin: 80px auto;
+	border-radius: 10px;
+	padding-bottom: 32px;
+	border: 5px solid transparent;
+	border-image: linear-gradient(
+		to bottom right,
+		#b827fc 0%,
+		#2c90fc 25%,
+		#b8fd33 50%,
+		#fec837 75%,
+		#fd1892 100%
+	);
+	border-image-slice: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h1 {
+	margin: 32px 0;
+	font-size: 24px;
+	font-family: "Mochiy Pop P One", sans-serif;
+	background-image: -webkit-linear-gradient(
+		left,
+		#f00,
+		#ff2b00,
+		#f50,
+		#ff8000,
+		#fa0,
+		#ffd500,
+		#ff0,
+		#d4ff00,
+		#af0,
+		#80ff00,
+		#5f0,
+		#2bff00,
+		#0f0,
+		#00ff2a,
+		#0f5,
+		#00ff80,
+		#0fa,
+		#00ffd5,
+		#0ff,
+		#00d5ff,
+		#0af,
+		#0080ff,
+		#05f,
+		#002aff,
+		#00f,
+		#2b00ff,
+		#50f,
+		#8000ff,
+		#a0f,
+		#d400ff,
+		#f0f,
+		#ff00d4,
+		#f0a,
+		#ff0080,
+		#f05,
+		#ff002b,
+		#f00
+	);
+	-webkit-animation: animatedBackground_a 5s linear infinite alternate;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: #0000;
+	background-clip: text;
 }
 
-.App-link {
-  color: #61dafb;
+.complete {
+	text-decoration: line-through;
+	opacity: 0.4;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-form {
+	margin-bottom: 32px;
+}
+
+.todo-input {
+	padding: 14px 32px 14px 16px;
+	border-radius: 4px 0 0 4px;
+	border: 3px solid transparent;
+	border-image: linear-gradient(
+		to bottom right,
+		#b827fc 0%,
+		#2c90fc 25%,
+		#b8fd33 50%,
+		#fec837 75%,
+		#fd1892 100%
+	);
+	border-image-slice: 1;
+	outline: none;
+	width: 320px;
+	background: transparent;
+	color: #fff;
+}
+
+.todo-input::placeholder {
+	color: #00ff2a;
+}
+
+.todo-button {
+	padding: 17px;
+	font-weight: bold;
+	border: none;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
+	outline: none;
+	background-image: linear-gradient(
+		to right,
+		red,
+		orange,
+		yellow,
+		green,
+		blue,
+		indigo,
+		red
+	);
+	animation: slidebg 2s linear infinite;
+	color: #161a2b;
+	text-transform: capitalize;
+}
+
+.todo-input.edit {
+	border: 2px solid #299617;
+}
+
+.todo-button.edit {
+	background-color: #00b712;
+	background-image: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
+	padding: 16px 22px;
+}
+
+.todo-container {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+}
+
+.todo-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 4px auto;
+	color: #fff;
+	background-color: #bf3a30;
+	background-image: linear-gradient(315deg, #bf3a30 0%, #864ba2 74%);
+	/* background: linear-gradient(
+    90deg,
+    rgba(255, 118, 20, 1) 0%,
+    rgba(255, 84, 17, 1) 100%
+  ); */
+
+	padding: 16px;
+	border-radius: 5px;
+	width: 90%;
+}
+
+.todo-row:nth-child(4n + 1) {
+	/* background: linear-gradient(
+    90deg,
+    rgba(93, 12, 255, 1) 0%,
+    rgba(155, 0, 250, 1) 100%
+  ); */
+	background-color: #f7b42c;
+	background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+}
+
+.todo-row:nth-child(4n + 2) {
+	/* background: linear-gradient(
+    90deg,
+    rgba(255, 12, 241, 1) 0%,
+    rgba(250, 0, 135, 1) 100%
+  ); */
+	background-color: #fbb034;
+	background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+}
+
+.todo-row:nth-child(4n + 3) {
+	/* background: linear-gradient(
+    90deg,
+    rgba(20, 159, 255, 1) 0%,
+    rgba(17, 122, 255, 1) 100%
+  ); */
+	background-color: #08e1ae;
+	background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%);
+}
+
+.todo-row:nth-child(4n + 4) {
+	/* background: linear-gradient(
+    90deg,
+    rgba(20, 159, 255, 1) 0%,
+    rgba(17, 122, 255, 1) 100%
+  ); */
+	background-color: #d387ab;
+	background-image: linear-gradient(315deg, #d387ab 0%, #b279a7 74%);
+}
+
+.icons {
+	display: flex;
+	align-items: center;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.delete-icon {
+	margin-right: 5px;
+	color: #ff007c;
+}
+
+.edit-icon {
+	color: #87ff2a;
+}
+
+.footer {
+	background-color: #36096d;
+	background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
+	height: 50px;
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.footer-tag {
+	
+	background: linear-gradient(90deg, #f00, #ff2b00, #f50, #ff8000, #fa0, #ffd500, #ff0, #d4ff00, #af0, #80ff00, #5f0, #2bff00, #0f0, #00ff2b, #0f5, #00ff80, #0fa, #00ffd5, #0ff, #00d4ff, #0af, #007fff, #05f, #002bff, #00f, #2a00ff, #50f, #7f00ff, #a0f, #d400ff, #f0f, #ff00d4, #f0a, #ff0080, #f05, #ff002b, #f00);
+    color: #0000;
+    -webkit-background-clip: text;
+    background-clip: text;
 }

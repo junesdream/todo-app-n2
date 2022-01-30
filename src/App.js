@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+// import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
+import Footer from "./components/Footer";
+// import Background from './assets/background.mp4'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div>
+			{/* <video src={Background} autoPlay loop muted /> */}
+			<div className="todo-app">
+				{/* <TodoForm /> */}
+				<TodoList />
+			</div>
+			<Footer />
+		</div>
+	);
 }
 
 export default App;
